@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
-        },
+  'Content-Type': 'text/plain'
+},
         body: JSON.stringify({ answer })
       });
 
