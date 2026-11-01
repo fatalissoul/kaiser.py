@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b16">
+  <meta name="description" content="Kaiser.py Reto 001 — La señal encontrada.">
+  <title>Reto 001 | Kaiser.py</title><link rel="stylesheet" href="styles.css">
+</head>
+<body class="challenge-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">&lt;/&gt;</span><span class="brand-divider"></span><span>Kaiser<span class="accent">.py</span></span></a>
+    <nav><a href="index.html#desafios">Archivo de desafíos</a><a class="nav-cta" href="#mision">La misión <span>↓</span></a></nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  </header>
+  <main class="section-wrap reto-main">
+    <a href="index.html#desafios" class="back-link">← VOLVER AL ARCHIVO</a>
+    <div class="reto-heading">
+      <div class="eyebrow"><span class="pulse"></span> KAISER.PY / ARCHIVO 001</div>
+      <div class="reto-title-row"><div><div class="section-kicker">TECH CHALLENGE / 001</div><h1>La señal <span class="gradient-text">encontrada.</span></h1></div><span class="level-chip">DIFICULTAD 08/10</span></div>
+      <p class="reto-intro">Hay información que no se ve a simple vista. Tienes una cadena Base64 que representa un archivo. Tu misión es recuperarlo, investigar su contenido y descubrir la palabra final.</p>
+    </div>
+
+    <section class="mission-grid" id="mision">
+      <div class="mission-main panel">
+        <div class="panel-heading"><span class="panel-icon">01</span><div><small>OBJETIVO</small><h2>Recupera la señal.</h2></div></div>
+        <p>Descarga el archivo de texto que contiene la cadena Base64. Decodifícala para obtener el archivo original y comienza tu investigación.</p>
+        <a class="button button-primary download-button" href="assets/reto-001/senal_base64.txt" download="KaiserPy_Reto001_Base64.txt"><span>↓</span> Descargar cadena Base64</a>
+        <div class="file-meta"><span>ARCHIVO: TXT</span><span>CONTENIDO: BASE64</span><span>ORIGEN: KAISER.PY</span></div>
+        <div class="mission-divider"></div>
+        <div class="panel-heading"><span class="panel-icon purple">02</span><div><small>PISTAS INICIALES</small><h2>Observa con atención.</h2></div></div>
+        <ul class="clue-list">
+          <li><span>01</span> La cadena representa un archivo, no un mensaje de texto.</li>
+          <li><span>02</span> El archivo recuperado es una imagen PNG.</li>
+          <li><span>03</span> La respuesta no está solamente en lo que ves.</li>
+        </ul>
+        <div class="hint-area">
+          <button class="hint-toggle" id="hintOne" aria-expanded="false"><span>＋</span> Pista opcional 01</button>
+          <div class="hint-content" id="hintContentOne" hidden>Los archivos pueden guardar información adicional además de sus píxeles. Investiga las propiedades internas del PNG.</div>
+          <button class="hint-toggle" id="hintTwo" aria-expanded="false"><span>＋</span> Pista opcional 02</button>
+          <div class="hint-content" id="hintContentTwo" hidden>Busca los bloques de texto (tEXt) de los metadatos PNG. Uno de sus valores está representado en hexadecimal.</div>
+        </div>
+      </div>
+      <aside class="mission-side">
+        <div class="side-card panel">
+          <div class="side-kicker">TU CAJA DE HERRAMIENTAS</div>
+          <div class="tool-item"><span>01</span><div><b>Python</b><small>Decodificación Base64 y análisis de archivos.</small></div></div>
+          <div class="tool-item"><span>02</span><div><b>ExifTool</b><small>Inspección de metadatos.</small></div></div>
+          <div class="tool-item"><span>03</span><div><b>CyberChef</b><small>Conversión de hexadecimal a texto.</small></div></div>
+          <div class="side-note">Puedes utilizar herramientas equivalentes. No necesitas software de pago.</div>
+        </div>
+        <div class="side-card panel caution-card"><span class="shield">◇</span><b>Un reto de análisis, no de intrusión.</b><p>No necesitas acceder a cuentas, atacar sistemas ni ejecutar archivos desconocidos.</p></div>
+      </aside>
+    </section>
+
+    <section class="answer-panel panel">
+      <div class="answer-heading"><div><div class="section-kicker">VALIDACIÓN / 001</div><h2>¿Encontraste la palabra?</h2><p>Introduce tu respuesta final. No incluyas explicaciones ni espacios adicionales.</p></div><div class="answer-symbol">⌁</div></div>
+      <form id="answerForm" autocomplete="off">
+        <label for="answerInput">RESPUESTA</label>
+        <div class="answer-input-row"><span class="input-prefix">&gt;_</span><input id="answerInput" name="answer" type="text" placeholder="Escribe aquí tu respuesta..." maxlength="40" spellcheck="false" required><button class="button button-primary" type="submit">Verificar <span>→</span></button></div>
+        <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+      </form>
+      <div class="success-box" id="successBox" hidden>
+        <div class="success-icon">✓</div><div><div class="success-kicker">SEÑAL IDENTIFICADA</div><h3>Desafío completado.</h3><p>Has encontrado la palabra correcta. La investigación del Archivo 001 ha concluido.</p><span class="success-stamp">KAISER.PY / ARCHIVE 001 / VERIFIED</span></div>
+      </div>
+      <div class="answer-foot"><span>KAISER.PY // ARCHIVO 001</span><span>LA RESPUESTA DISTINGUE MAYÚSCULAS Y MINÚSCULAS: NO</span></div>
+    </section>
+    <div class="reto-footer-line"><span>&lt;/&gt; KAISER.PY</span><span>DECODIFICA. INVESTIGA. DESCUBRE.</span><a href="index.html">INICIO ↑</a></div>
+  </main>
+  <script src="script.js"></script><script src="reto.js"></script>
+</body>
+</html>
