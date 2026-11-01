@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const message = document.getElementById('formMessage');
   const success = document.getElementById('successBox');
 
+  // Cloudflare Worker: endpoint de validación
   const WORKER_URL =
-    'https://kaiserpy-validator.cl75023.workers.dev';
+    'https://kaiserpy-validator.cl75023.workers.dev/api/validate';
 
+  // Ocultar el panel de éxito al cargar la página
   success.hidden = true;
 
   form.addEventListener('submit', async (event) => {
@@ -38,8 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
         : button.textContent
       : null;
 
+    // Estado de verificación
     if (button) {
       button.disabled = true;
+
       if (button.tagName === 'INPUT') {
         button.value = 'Verificando...';
       } else {
@@ -53,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: {
-  'Content-Type': 'text/plain'
-},
+          'Content-Type': 'text/plain'
+        },
         body: JSON.stringify({ answer })
       });
 
@@ -65,27 +69,37 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await response.json();
 
       if (result.correct === true) {
+        // Respuesta correcta
         message.textContent = '';
         form.hidden = true;
         success.hidden = false;
+
         success.scrollIntoView({
           behavior: 'smooth',
           block: 'center'
         });
+
       } else {
+        // Respuesta incorrecta
         success.hidden = true;
+
         message.textContent =
           'Respuesta incorrecta. La señal aún no coincide. Revisa las pistas y vuelve a intentarlo.';
+
         input.focus();
         input.select();
       }
+
     } catch (error) {
-      console.error(error);
+      console.error('Error de validación:', error);
+
       message.textContent =
         'No fue posible validar la respuesta. Intenta nuevamente en unos momentos.';
+
     } finally {
       if (button) {
         button.disabled = false;
+
         if (button.tagName === 'INPUT') {
           button.value = originalText;
         } else {
